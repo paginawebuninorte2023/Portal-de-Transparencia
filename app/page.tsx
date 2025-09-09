@@ -3,6 +3,7 @@ import Services from "@/components/services"
 import MembershipSection from "@/components/membership-section"
 import FinancialSupport from "@/components/financial-support"
 import ManagementPlan from "@/components/management-plan"
+import DataAnalysis from "@/components/data-analysis"
 import ContactForm from "@/components/contact-form"
 
 export default function Home() {
@@ -13,8 +14,8 @@ export default function Home() {
       <ManagementPlan />
       <MembershipSection />
       <FinancialSupport />
+      <DataAnalysis />
       <ContactForm />
     </div>
   )
 }
-

@@ -2,14 +2,14 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from "next/link"
 
 export default function MembershipSection() {
-  const [activeTab, setActiveTab] = useState("2025-1")
+  const [selectedPeriod, setSelectedPeriod] = useState("2025-2")
 
   const membershipLinks = {
-    "2025-1": [
+    "2025-2": [
       {
         name: "Académico",
         icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Acad%C3%A9mico-CM8vra1dr6rBT3HnW6RdAdmQ8tcN0T.png",
@@ -34,6 +34,33 @@ export default function MembershipSection() {
         name: "Mercadeo",
         icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mercadeo-2ZlPpts94HwcpTgB1Y3X0J9F8KUgBm.png",
         url: "#",
+      },
+    ],
+    "2025-1": [
+      {
+        name: "Académico",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Acad%C3%A9mico-CM8vra1dr6rBT3HnW6RdAdmQ8tcN0T.png",
+        url: "https://drive.google.com/drive/folders/1CkdfpsnwH8s4reDCOrYufEiLCBh0DYwC?usp=drive_link",
+      },
+      {
+        name: "Comunicaciones",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Comunicaciones-onbHvS71vNVyXOggyOWSnoJpDGsRGb.png",
+        url: "https://drive.google.com/drive/folders/15OqbbcyYodS0Q9gu1R8Fn2y-y7YODvzu?usp=drive_link",
+      },
+      {
+        name: "Desarrollo",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Desarrollo-ukIr7hsDlgdr0cvmTI6epa27dgwZ5E.png",
+        url: "https://drive.google.com/drive/folders/1zhGW7p68fKJElrzpZY5GPtSzpbOFd5PV?usp=drive_link",
+      },
+      {
+        name: "Finanzas",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Finanzas-3uw1gCQHifl5dW90KzDux84wbM16HF.png",
+        url: "https://drive.google.com/drive/folders/1yTiTffVZO4rMg1EzpGPSOZmTehuTjKTo?usp=drive_link",
+      },
+      {
+        name: "Mercadeo",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mercadeo-2ZlPpts94HwcpTgB1Y3X0J9F8KUgBm.png",
+        url: "https://drive.google.com/drive/folders/1LIxYmywnVP65o8PqQTvyet0KrRhiOATP?usp=drive_link",
       },
     ],
     "2024-2": [
@@ -77,49 +104,39 @@ export default function MembershipSection() {
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <Tabs defaultValue="2025-1" className="w-full" onValueChange={setActiveTab}>
-            <div className="flex justify-center mb-8">
-              <TabsList className="inline-flex">
-                <TabsTrigger value="2025-1" className="px-6 py-2 rounded-md">
-                  Periodo 2025-1
-                </TabsTrigger>
-                <TabsTrigger value="2024-2" className="px-6 py-2 rounded-md">
-                  Periodo 2024-2
-                </TabsTrigger>
-              </TabsList>
-            </div>
+          <div className="flex justify-center mb-8">
+            <Select value={selectedPeriod} onValueChange={setSelectedPeriod}>
+              <SelectTrigger className="w-[200px]">
+                <SelectValue placeholder="Seleccionar periodo" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="2025-2">Periodo 2025-2</SelectItem>
+                <SelectItem value="2025-1">Periodo 2025-1</SelectItem>
+                <SelectItem value="2024-2">Periodo 2024-2</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
 
-            {["2025-1", "2024-2"].map((period) => (
-              <TabsContent key={period} value={period} className="mt-0">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                  {membershipLinks[period].map((link) => (
-                    <Link
-                      key={link.name}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg flex flex-col items-center hover:shadow-md transition-all duration-300"
-                    >
-                      <div className="w-24 h-24 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mb-4">
-                        <div className="relative w-16 h-16">
-                          <Image
-                            src={link.icon || "/placeholder.svg"}
-                            alt={link.name}
-                            fill
-                            className="object-contain"
-                          />
-                        </div>
-                      </div>
-                      <h3 className="text-lg font-medium text-gray-800 dark:text-white">{link.name}</h3>
-                    </Link>
-                  ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {membershipLinks[selectedPeriod].map((link) => (
+              <Link
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg flex flex-col items-center hover:shadow-md transition-all duration-300"
+              >
+                <div className="w-24 h-24 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mb-4">
+                  <div className="relative w-16 h-16">
+                    <Image src={link.icon || "/placeholder.svg"} alt={link.name} fill className="object-contain" />
+                  </div>
                 </div>
-              </TabsContent>
+                <h3 className="text-lg font-medium text-gray-800 dark:text-white">{link.name}</h3>
+              </Link>
             ))}
-          </Tabs>
+          </div>
         </div>
       </div>
     </section>
   )
 }
-

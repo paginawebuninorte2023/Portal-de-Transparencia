@@ -82,6 +82,15 @@ export default function Footer() {
               </li>
               <li>
                 <button
+                  onClick={() => scrollToSection("analisis-datos")}
+                  className="text-gray-300 hover:text-white transition-colors flex items-center"
+                >
+                  <span className="w-1.5 h-1.5 bg-gray-500 rounded-full mr-2"></span>
+                  Análisis de Datos
+                </button>
+              </li>
+              <li>
+                <button
                   onClick={() => scrollToSection("contacto")}
                   className="text-gray-300 hover:text-white transition-colors flex items-center"
                 >
@@ -113,4 +122,3 @@ export default function Footer() {
     </footer>
   )
 }
-

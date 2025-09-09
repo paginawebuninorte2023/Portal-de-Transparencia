@@ -1,20 +1,47 @@
 "use client"
 
 import { useState } from "react"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from "next/link"
 import { Calendar, FileText } from "lucide-react"
 
 export default function FinancialSupport() {
-  const [activeTab, setActiveTab] = useState("2025-1")
+  const [selectedPeriod, setSelectedPeriod] = useState("2025-2")
 
   const financialLinks = {
+    "2025-2": [
+      { name: "Agosto", url: "#", icon: <Calendar className="h-6 w-6" /> },
+      { name: "Septiembre", url: "#", icon: <Calendar className="h-6 w-6" /> },
+      { name: "Octubre", url: "#", icon: <Calendar className="h-6 w-6" /> },
+      { name: "Noviembre", url: "#", icon: <Calendar className="h-6 w-6" /> },
+      { name: "Diciembre", url: "#", icon: <Calendar className="h-6 w-6" /> },
+    ],
     "2025-1": [
-      { name: "Febrero", url: "#", icon: <Calendar className="h-6 w-6" /> },
-      { name: "Marzo", url: "#", icon: <Calendar className="h-6 w-6" /> },
-      { name: "Abril", url: "#", icon: <Calendar className="h-6 w-6" /> },
-      { name: "Mayo", url: "#", icon: <Calendar className="h-6 w-6" /> },
-      { name: "Junio", url: "#", icon: <Calendar className="h-6 w-6" /> },
+      {
+        name: "Febrero",
+        url: "https://drive.google.com/drive/folders/1xn5BVuZzKC2pUybl-DXLEx8eZGLJ5DCf?usp=drive_link",
+        icon: <Calendar className="h-6 w-6" />,
+      },
+      {
+        name: "Marzo",
+        url: "https://drive.google.com/drive/folders/1QwhMSEvw3jFQqP7jZgidaH-13t_gHT0Q?usp=drive_link",
+        icon: <Calendar className="h-6 w-6" />,
+      },
+      {
+        name: "Abril",
+        url: "https://drive.google.com/drive/folders/18W5ILHjfo3bnOYJju_jMEox_baI10buU?usp=drive_link",
+        icon: <Calendar className="h-6 w-6" />,
+      },
+      {
+        name: "Mayo",
+        url: "https://drive.google.com/drive/folders/1xrtyHXLR7oyC5NET8L2Rkship54ObJCg?usp=drive_link",
+        icon: <Calendar className="h-6 w-6" />,
+      },
+      {
+        name: "Junio",
+        url: "https://drive.google.com/drive/folders/171MgwAubLs3xg6NzMDWzCd07n7h3C7zi?usp=drive_link",
+        icon: <Calendar className="h-6 w-6" />,
+      },
     ],
     "2024-2": [
       {
@@ -56,47 +83,39 @@ export default function FinancialSupport() {
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <Tabs defaultValue="2025-1" className="w-full" onValueChange={setActiveTab}>
-            <div className="flex justify-center mb-8">
-              <TabsList className="inline-flex">
-                <TabsTrigger value="2025-1" className="px-6 py-2 rounded-md">
-                  Periodo 2025-1
-                </TabsTrigger>
-                <TabsTrigger value="2024-2" className="px-6 py-2 rounded-md">
-                  Periodo 2024-2
-                </TabsTrigger>
-              </TabsList>
-            </div>
+          <div className="flex justify-center mb-8">
+            <Select value={selectedPeriod} onValueChange={setSelectedPeriod}>
+              <SelectTrigger className="w-[200px]">
+                <SelectValue placeholder="Seleccionar periodo" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="2025-2">Periodo 2025-2</SelectItem>
+                <SelectItem value="2025-1">Periodo 2025-1</SelectItem>
+                <SelectItem value="2024-2">Periodo 2024-2</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
 
-            {["2025-1", "2024-2"].map((period) => (
-              <TabsContent key={period} value={period} className="mt-0">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                  {financialLinks[period].map((link) => (
-                    <div
-                      key={link.name}
-                      className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg flex flex-col items-center"
-                    >
-                      <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center mb-4">
-                        {link.icon}
-                      </div>
-                      <h3 className="text-lg font-medium text-gray-800 dark:text-white mb-2">{link.name}</h3>
-                      <Link
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm"
-                      >
-                        <FileText className="h-4 w-4 mr-1" /> Ver soportes
-                      </Link>
-                    </div>
-                  ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {financialLinks[selectedPeriod].map((link) => (
+              <div key={link.name} className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg flex flex-col items-center">
+                <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center mb-4">
+                  {link.icon}
                 </div>
-              </TabsContent>
+                <h3 className="text-lg font-medium text-gray-800 dark:text-white mb-2">{link.name}</h3>
+                <Link
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm"
+                >
+                  <FileText className="h-4 w-4 mr-1" /> Ver soportes
+                </Link>
+              </div>
             ))}
-          </Tabs>
+          </div>
         </div>
       </div>
     </section>
   )
 }
-

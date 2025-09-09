@@ -89,6 +89,12 @@ export default function Navbar() {
             Soportes Financieros
           </button>
           <button
+            onClick={() => scrollToSection("analisis-datos")}
+            className="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
+          >
+            Análisis de Datos
+          </button>
+          <button
             onClick={() => scrollToSection("contacto")}
             className="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
           >
@@ -154,6 +160,12 @@ export default function Navbar() {
               Soportes Financieros
             </button>
             <button
+              onClick={() => scrollToSection("analisis-datos")}
+              className="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors py-2"
+            >
+              Análisis de Datos
+            </button>
+            <button
               onClick={() => scrollToSection("contacto")}
               className="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors py-2"
             >
@@ -165,4 +177,3 @@ export default function Navbar() {
     </header>
   )
 }
-

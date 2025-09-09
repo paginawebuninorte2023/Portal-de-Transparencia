@@ -11,6 +11,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Portal de Transparencia - Interventoría Capitular",
   description: "Portal de transparencia para asociados de Interventoría Capitular",
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
@@ -30,4 +31,3 @@ export default function RootLayout({
     </html>
   )
 }
-

@@ -1,6 +1,6 @@
 "use client"
 
-import { Users, FileText, BarChart3 } from "lucide-react"
+import { Users, FileText, BarChart3, PieChart } from "lucide-react"
 
 export default function Services() {
   const scrollToSection = (id) => {
@@ -25,7 +25,7 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-md">
             <div className="flex justify-center mb-4">
               <div className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-600 flex items-center justify-center">
@@ -83,9 +83,28 @@ export default function Services() {
               Ir al servicio
             </button>
           </div>
+
+          <div className="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-md">
+            <div className="flex justify-center mb-4">
+              <div className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-600 flex items-center justify-center">
+                <PieChart className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+              </div>
+            </div>
+            <h3 className="text-xl font-bold text-center text-gray-800 dark:text-white mb-3">
+              Análisis de Datos Capitular
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-6 text-center">
+              Aquí puedes encontrar las dashboards que analizan los diversos procesos del Capítulo.
+            </p>
+            <button
+              onClick={() => scrollToSection("analisis-datos")}
+              className="block w-full py-3 bg-gray-700 hover:bg-gray-800 text-white text-center rounded-md transition-colors"
+            >
+              Ir al servicio
+            </button>
+          </div>
         </div>
       </div>
     </section>
   )
 }
-
