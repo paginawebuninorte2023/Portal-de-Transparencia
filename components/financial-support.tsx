@@ -10,11 +10,21 @@ export default function FinancialSupport() {
 
   const financialLinks = {
     "2025-2": [
-      { name: "Agosto", url: "#", icon: <Calendar className="h-6 w-6" /> },
-      { name: "Septiembre", url: "#", icon: <Calendar className="h-6 w-6" /> },
-      { name: "Octubre", url: "#", icon: <Calendar className="h-6 w-6" /> },
-      { name: "Noviembre", url: "#", icon: <Calendar className="h-6 w-6" /> },
-      { name: "Diciembre", url: "#", icon: <Calendar className="h-6 w-6" /> },
+      {
+        name: "Septiembre",
+        url: "https://drive.google.com/drive/folders/1JuyawRgFgjzS7VHou-_cL95zajDhNgKZ?usp=drive_link",
+        icon: <Calendar className="h-6 w-6" />,
+      },
+      {
+        name: "Octubre",
+        url: "https://drive.google.com/drive/folders/1SxmwNJOynTBU9frdQ-6jTSsuNyMwQcJR?usp=drive_link",
+        icon: <Calendar className="h-6 w-6" />,
+      },
+      {
+        name: "Noviembre",
+        url: "https://drive.google.com/drive/folders/1OqVNJWwYGAeX6xo-Kym45kAnPRldXgko?usp=drive_link",
+        icon: <Calendar className="h-6 w-6" />,
+      },
     ],
     "2025-1": [
       {

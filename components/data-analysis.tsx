@@ -1,22 +1,21 @@
-import Image from "next/image"
 import Link from "next/link"
-import { PieChart } from "lucide-react"
+import { PieChart, Settings, Users, DollarSign } from "lucide-react"
 
 export default function DataAnalysis() {
   const analysisOptions = [
     {
       name: "Análisis de Procesos",
-      image: "/images/DCC.png",
+      icon: <Settings className="h-16 w-16 text-blue-600" />,
       url: "https://lookerstudio.google.com/reporting/18bfc851-52b3-402d-b383-4f084d2b3c49",
     },
     {
       name: "Asistencia a Asambleas",
-      image: "/images/PC.png",
+      icon: <Users className="h-16 w-16 text-green-600" />,
       url: "https://lookerstudio.google.com/reporting/e7dd7e4d-f276-4216-8088-5980bf595942",
     },
     {
       name: "Finanzas del Capítulo",
-      image: "/images/DCF.png",
+      icon: <DollarSign className="h-16 w-16 text-orange-600" />,
       url: "https://lookerstudio.google.com/reporting/58d1f5af-3d92-47ac-9ed0-05632ebd4cd1",
     },
   ]
@@ -46,13 +45,8 @@ export default function DataAnalysis() {
                 rel="noopener noreferrer"
                 className="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center"
               >
-                <div className="w-32 h-32 mb-6 relative">
-                  <Image
-                    src={option.image || "/placeholder.svg"}
-                    alt={option.name}
-                    fill
-                    className="object-contain rounded-lg"
-                  />
+                <div className="w-32 h-32 mb-6 flex items-center justify-center bg-gray-50 dark:bg-gray-600 rounded-lg">
+                  {option.icon}
                 </div>
                 <h3 className="text-xl font-bold text-center text-gray-800 dark:text-white">{option.name}</h3>
               </Link>

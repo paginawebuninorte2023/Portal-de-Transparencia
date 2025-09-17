@@ -13,27 +13,32 @@ export default function MembershipSection() {
       {
         name: "Académico",
         icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Acad%C3%A9mico-CM8vra1dr6rBT3HnW6RdAdmQ8tcN0T.png",
-        url: "#",
+        url: "https://drive.google.com/drive/folders/1zNf-82tKcNwDE49RmG6s-idkIUZzGkyx?usp=drive_link",
       },
       {
         name: "Comunicaciones",
         icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Comunicaciones-onbHvS71vNVyXOggyOWSnoJpDGsRGb.png",
-        url: "#",
+        url: "https://drive.google.com/drive/folders/1noDjWHvC8SDpqI8eb35Yc2dAaGOyuTNf?usp=drive_link",
       },
       {
         name: "Desarrollo",
         icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Desarrollo-ukIr7hsDlgdr0cvmTI6epa27dgwZ5E.png",
-        url: "#",
+        url: "https://drive.google.com/drive/folders/1kBEM0rxXgUSrFMcfmmJ1821vTUPj3yHL?usp=drive_link",
       },
       {
         name: "Finanzas",
         icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Finanzas-3uw1gCQHifl5dW90KzDux84wbM16HF.png",
-        url: "#",
+        url: "https://drive.google.com/drive/folders/1KTHeLlZLPLTbpmI8fIihrETGihgL3JSB?usp=drive_link",
       },
       {
         name: "Mercadeo",
         icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mercadeo-2ZlPpts94HwcpTgB1Y3X0J9F8KUgBm.png",
-        url: "#",
+        url: "https://drive.google.com/drive/folders/1zlAX5Up7nd-jnjknHHAwl9Axpid13clU?usp=drive_link",
+      },
+      {
+        name: "JDC-IC",
+        icon: "/images/UNINORTE-COLOR.png",
+        url: "https://drive.google.com/drive/folders/1sCBWq7xICJeaah4RdWxyiJFLsuP6pElA?usp=drive_link",
       },
     ],
     "2025-1": [
@@ -117,7 +122,7 @@ export default function MembershipSection() {
             </Select>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {membershipLinks[selectedPeriod].map((link) => (
               <Link
                 key={link.name}
