@@ -1,14 +1,34 @@
 "use client"
 
 import { useState } from "react"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from "next/link"
-import { BarChart2, FileText } from "lucide-react"
+import { BarChart2, FileText, ChevronDown } from "lucide-react"
+
+type PeriodKey = "2026-1" | "2025-2" | "2025-1" | "2024-2"
 
 export default function ManagementPlan() {
-  const [selectedPeriod, setSelectedPeriod] = useState("2025-2")
+  const [selectedPeriod, setSelectedPeriod] = useState<PeriodKey>("2026-1")
+  const [isOpen, setIsOpen] = useState(false)
 
-  const managementLinks = {
+  const periods: { value: PeriodKey; label: string }[] = [
+    { value: "2026-1", label: "Periodo 2026-1" },
+    { value: "2025-2", label: "Periodo 2025-2" },
+    { value: "2025-1", label: "Periodo 2025-1" },
+    { value: "2024-2", label: "Periodo 2024-2" },
+  ]
+
+  const managementLinks: Record<PeriodKey, { name: string; url: string }[]> = {
+    "2026-1": [
+      { name: "DCA", url: "https://drive.google.com/drive/folders/1f0_xfIVNFPmdfI3EssXgpU0zEL5wT0RF?usp=drive_link" },
+      { name: "DCC", url: "https://drive.google.com/drive/folders/1Bbezib_17zY2zEbpCHOAJuBf0Ze-YQwZ?usp=drive_link" },
+      { name: "DCD", url: "https://drive.google.com/drive/folders/1AP2k_5RhlgKF0d7kIdQtJDSzkjmYZSax?usp=drive_link" },
+      { name: "DCF", url: "https://drive.google.com/drive/folders/1vEjTklR2Fiyw0MnWdiSy1psW8N9dvyWg?usp=drive_link" },
+      { name: "DCM", url: "https://drive.google.com/drive/folders/1JWJnfLyaWDS7cxZJ4ya85jH4eDkCpFR_?usp=drive_link" },
+      {
+        name: "Transversales",
+        url: "https://drive.google.com/drive/folders/1J6Lbe5zzdeTiF-yI2B57x80Lyvvm4R8V?usp=drive_link",
+      },
+    ],
     "2025-2": [
       { name: "DCA", url: "https://drive.google.com/drive/folders/1JaXsvBI51PLo6NEkF6ZfNg3SIKsDYUOC?usp=drive_link" },
       { name: "DCC", url: "https://drive.google.com/drive/folders/1JehlS4lmb4yjbx_IRUbdOZCXN_hb1_-K?usp=drive_link" },
@@ -65,16 +85,37 @@ export default function ManagementPlan() {
 
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-center mb-8">
-            <Select value={selectedPeriod} onValueChange={setSelectedPeriod}>
-              <SelectTrigger className="w-[200px]">
-                <SelectValue placeholder="Seleccionar periodo" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="2025-2">Periodo 2025-2</SelectItem>
-                <SelectItem value="2025-1">Periodo 2025-1</SelectItem>
-                <SelectItem value="2024-2">Periodo 2024-2</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="relative">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="flex items-center justify-between w-[200px] px-4 py-2 text-sm bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              >
+                <span className="text-gray-700 dark:text-gray-200">
+                  {periods.find((p) => p.value === selectedPeriod)?.label}
+                </span>
+                <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+              </button>
+              {isOpen && (
+                <div className="absolute z-10 w-full mt-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg">
+                  {periods.map((period) => (
+                    <button
+                      key={period.value}
+                      onClick={() => {
+                        setSelectedPeriod(period.value)
+                        setIsOpen(false)
+                      }}
+                      className={`w-full px-4 py-2 text-sm text-left hover:bg-gray-100 dark:hover:bg-gray-600 ${
+                        selectedPeriod === period.value
+                          ? "bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-white"
+                          : "text-gray-700 dark:text-gray-200"
+                      }`}
+                    >
+                      {period.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

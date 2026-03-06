@@ -2,13 +2,55 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from "next/link"
+import { ChevronDown } from "lucide-react"
+
+type PeriodKey = "2026-1" | "2025-2" | "2025-1" | "2024-2"
 
 export default function MembershipSection() {
-  const [selectedPeriod, setSelectedPeriod] = useState("2025-2")
+  const [selectedPeriod, setSelectedPeriod] = useState<PeriodKey>("2026-1")
+  const [isOpen, setIsOpen] = useState(false)
 
-  const membershipLinks = {
+  const periods: { value: PeriodKey; label: string }[] = [
+    { value: "2026-1", label: "Periodo 2026-1" },
+    { value: "2025-2", label: "Periodo 2025-2" },
+    { value: "2025-1", label: "Periodo 2025-1" },
+    { value: "2024-2", label: "Periodo 2024-2" },
+  ]
+
+  const membershipLinks: Record<PeriodKey, { name: string; icon: string; url: string }[]> = {
+    "2026-1": [
+      {
+        name: "Académico",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Acad%C3%A9mico-CM8vra1dr6rBT3HnW6RdAdmQ8tcN0T.png",
+        url: "https://drive.google.com/drive/folders/1f0q-0ezhh4lZVi8aVb7aovU6v4uiH9bM?usp=drive_link",
+      },
+      {
+        name: "Comunicaciones",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Comunicaciones-onbHvS71vNVyXOggyOWSnoJpDGsRGb.png",
+        url: "https://drive.google.com/drive/folders/1cUtjEUayamavtsGn0JrX8V9npflUWoTr?usp=drive_link",
+      },
+      {
+        name: "Desarrollo",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Desarrollo-ukIr7hsDlgdr0cvmTI6epa27dgwZ5E.png",
+        url: "https://drive.google.com/drive/folders/12uu_TykuTuLkjizHynNHzWBB65OgUZB2?usp=drive_link",
+      },
+      {
+        name: "Finanzas",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Finanzas-3uw1gCQHifl5dW90KzDux84wbM16HF.png",
+        url: "https://drive.google.com/drive/folders/1HAqNqcJU5nH1IQEbE1Q_L9INX96ex786?usp=drive_link",
+      },
+      {
+        name: "Mercadeo",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mercadeo-2ZlPpts94HwcpTgB1Y3X0J9F8KUgBm.png",
+        url: "https://drive.google.com/drive/folders/1VfKKNqoMYUgGeI9BvB5oGyowRAMWPHLp?usp=drive_link",
+      },
+      {
+        name: "JDC-IC",
+        icon: "/images/UNINORTE-COLOR.png",
+        url: "https://drive.google.com/drive/folders/1_P79MLICuHUiWzBmSxX4pLmwMMP9E_jD?usp=drive_link",
+      },
+    ],
     "2025-2": [
       {
         name: "Académico",
@@ -110,16 +152,37 @@ export default function MembershipSection() {
 
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-center mb-8">
-            <Select value={selectedPeriod} onValueChange={setSelectedPeriod}>
-              <SelectTrigger className="w-[200px]">
-                <SelectValue placeholder="Seleccionar periodo" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="2025-2">Periodo 2025-2</SelectItem>
-                <SelectItem value="2025-1">Periodo 2025-1</SelectItem>
-                <SelectItem value="2024-2">Periodo 2024-2</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="relative">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="flex items-center justify-between w-[200px] px-4 py-2 text-sm bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              >
+                <span className="text-gray-700 dark:text-gray-200">
+                  {periods.find((p) => p.value === selectedPeriod)?.label}
+                </span>
+                <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+              </button>
+              {isOpen && (
+                <div className="absolute z-10 w-full mt-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg">
+                  {periods.map((period) => (
+                    <button
+                      key={period.value}
+                      onClick={() => {
+                        setSelectedPeriod(period.value)
+                        setIsOpen(false)
+                      }}
+                      className={`w-full px-4 py-2 text-sm text-left hover:bg-gray-100 dark:hover:bg-gray-600 ${
+                        selectedPeriod === period.value
+                          ? "bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-white"
+                          : "text-gray-700 dark:text-gray-200"
+                      }`}
+                    >
+                      {period.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
