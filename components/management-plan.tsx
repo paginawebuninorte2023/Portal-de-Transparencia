@@ -4,19 +4,31 @@ import { useState } from "react"
 import Link from "next/link"
 import { BarChart2, FileText, ChevronDown } from "lucide-react"
 
-type PeriodKey = "2025-2" | "2025-1" | "2024-2"
+type PeriodKey = "2026-1" | "2025-2" | "2025-1" | "2024-2"
 
 export default function ManagementPlan() {
-  const [selectedPeriod, setSelectedPeriod] = useState<PeriodKey>("2025-2")
+  const [selectedPeriod, setSelectedPeriod] = useState<PeriodKey>("2026-1")
   const [isOpen, setIsOpen] = useState(false)
 
   const periods: { value: PeriodKey; label: string }[] = [
+    { value: "2026-1", label: "Periodo 2026-1" },
     { value: "2025-2", label: "Periodo 2025-2" },
     { value: "2025-1", label: "Periodo 2025-1" },
     { value: "2024-2", label: "Periodo 2024-2" },
   ]
 
   const managementLinks: Record<PeriodKey, { name: string; url: string }[]> = {
+    "2026-1": [
+      { name: "DCA", url: "https://drive.google.com/drive/folders/1f0_xfIVNFPmdfI3EssXgpU0zEL5wT0RF?usp=drive_link" },
+      { name: "DCC", url: "https://drive.google.com/drive/folders/1Bbezib_17zY2zEbpCHOAJuBf0Ze-YQwZ?usp=drive_link" },
+      { name: "DCD", url: "https://drive.google.com/drive/folders/1AP2k_5RhlgKF0d7kIdQtJDSzkjmYZSax?usp=drive_link" },
+      { name: "DCF", url: "https://drive.google.com/drive/folders/1vEjTklR2Fiyw0MnWdiSy1psW8N9dvyWg?usp=drive_link" },
+      { name: "DCM", url: "https://drive.google.com/drive/folders/1JWJnfLyaWDS7cxZJ4ya85jH4eDkCpFR_?usp=drive_link" },
+      {
+        name: "Transversales",
+        url: "https://drive.google.com/drive/folders/1J6Lbe5zzdeTiF-yI2B57x80Lyvvm4R8V?usp=drive_link",
+      },
+    ],
     "2025-2": [
       { name: "DCA", url: "https://drive.google.com/drive/folders/1JaXsvBI51PLo6NEkF6ZfNg3SIKsDYUOC?usp=drive_link" },
       { name: "DCC", url: "https://drive.google.com/drive/folders/1JehlS4lmb4yjbx_IRUbdOZCXN_hb1_-K?usp=drive_link" },

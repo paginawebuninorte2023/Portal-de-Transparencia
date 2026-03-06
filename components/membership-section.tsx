@@ -5,19 +5,52 @@ import Image from "next/image"
 import Link from "next/link"
 import { ChevronDown } from "lucide-react"
 
-type PeriodKey = "2025-2" | "2025-1" | "2024-2"
+type PeriodKey = "2026-1" | "2025-2" | "2025-1" | "2024-2"
 
 export default function MembershipSection() {
-  const [selectedPeriod, setSelectedPeriod] = useState<PeriodKey>("2025-2")
+  const [selectedPeriod, setSelectedPeriod] = useState<PeriodKey>("2026-1")
   const [isOpen, setIsOpen] = useState(false)
 
   const periods: { value: PeriodKey; label: string }[] = [
+    { value: "2026-1", label: "Periodo 2026-1" },
     { value: "2025-2", label: "Periodo 2025-2" },
     { value: "2025-1", label: "Periodo 2025-1" },
     { value: "2024-2", label: "Periodo 2024-2" },
   ]
 
   const membershipLinks: Record<PeriodKey, { name: string; icon: string; url: string }[]> = {
+    "2026-1": [
+      {
+        name: "Académico",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Acad%C3%A9mico-CM8vra1dr6rBT3HnW6RdAdmQ8tcN0T.png",
+        url: "https://drive.google.com/drive/folders/1f0q-0ezhh4lZVi8aVb7aovU6v4uiH9bM?usp=drive_link",
+      },
+      {
+        name: "Comunicaciones",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Comunicaciones-onbHvS71vNVyXOggyOWSnoJpDGsRGb.png",
+        url: "https://drive.google.com/drive/folders/1cUtjEUayamavtsGn0JrX8V9npflUWoTr?usp=drive_link",
+      },
+      {
+        name: "Desarrollo",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Desarrollo-ukIr7hsDlgdr0cvmTI6epa27dgwZ5E.png",
+        url: "https://drive.google.com/drive/folders/12uu_TykuTuLkjizHynNHzWBB65OgUZB2?usp=drive_link",
+      },
+      {
+        name: "Finanzas",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Finanzas-3uw1gCQHifl5dW90KzDux84wbM16HF.png",
+        url: "https://drive.google.com/drive/folders/1HAqNqcJU5nH1IQEbE1Q_L9INX96ex786?usp=drive_link",
+      },
+      {
+        name: "Mercadeo",
+        icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mercadeo-2ZlPpts94HwcpTgB1Y3X0J9F8KUgBm.png",
+        url: "https://drive.google.com/drive/folders/1VfKKNqoMYUgGeI9BvB5oGyowRAMWPHLp?usp=drive_link",
+      },
+      {
+        name: "JDC-IC",
+        icon: "/images/UNINORTE-COLOR.png",
+        url: "https://drive.google.com/drive/folders/1_P79MLICuHUiWzBmSxX4pLmwMMP9E_jD?usp=drive_link",
+      },
+    ],
     "2025-2": [
       {
         name: "Académico",
