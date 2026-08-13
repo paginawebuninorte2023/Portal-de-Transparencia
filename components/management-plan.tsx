@@ -4,13 +4,14 @@ import { useState } from "react"
 import Link from "next/link"
 import { BarChart2, FileText, ChevronDown } from "lucide-react"
 
-type PeriodKey = "2026-1" | "2025-2" | "2025-1" | "2024-2"
+type PeriodKey = "2026-2" | "2026-1" | "2025-2" | "2025-1" | "2024-2"
 
 export default function ManagementPlan() {
-  const [selectedPeriod, setSelectedPeriod] = useState<PeriodKey>("2026-1")
+  const [selectedPeriod, setSelectedPeriod] = useState<PeriodKey>("2026-2")
   const [isOpen, setIsOpen] = useState(false)
 
   const periods: { value: PeriodKey; label: string }[] = [
+    { value: "2026-2", label: "Periodo 2026-2" },
     { value: "2026-1", label: "Periodo 2026-1" },
     { value: "2025-2", label: "Periodo 2025-2" },
     { value: "2025-1", label: "Periodo 2025-1" },
@@ -18,6 +19,32 @@ export default function ManagementPlan() {
   ]
 
   const managementLinks: Record<PeriodKey, { name: string; url: string }[]> = {
+    "2026-2": [
+      {
+        name: "Académico",
+        url: "https://drive.google.com/drive/folders/1zQb9BCmPaGd2TekKAQ4CTiX23eTcixBJ?usp=drive_link",
+      },
+      {
+        name: "Comunicaciones",
+        url: "https://drive.google.com/drive/folders/1Yb2GxnCi7hf7ucAuNuyy5UQyFjzt1Pec?usp=drive_link",
+      },
+      {
+        name: "Desarrollo",
+        url: "https://drive.google.com/drive/folders/17ATvCvI2WrknWTMD8jt3MWeiOyJMLgc_?usp=drive_link",
+      },
+      {
+        name: "Finanzas",
+        url: "https://drive.google.com/drive/folders/1agpayvGa8_V3Tg3k7BXdkxzU7vWUV7Nm?usp=drive_link",
+      },
+      {
+        name: "Mercadeo",
+        url: "https://drive.google.com/drive/folders/1N1I-rjBu1mFywZE1yJY2uOopbS1H6-ij?usp=drive_link",
+      },
+      {
+        name: "Transversales",
+        url: "https://drive.google.com/drive/folders/1wIObNE0u0Z5-iNkDY3AKl5xhxsolauGz?usp=drive_link",
+      },
+    ],
     "2026-1": [
       { name: "DCA", url: "https://drive.google.com/drive/folders/1f0_xfIVNFPmdfI3EssXgpU0zEL5wT0RF?usp=drive_link" },
       { name: "DCC", url: "https://drive.google.com/drive/folders/1Bbezib_17zY2zEbpCHOAJuBf0Ze-YQwZ?usp=drive_link" },
