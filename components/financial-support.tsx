@@ -4,13 +4,14 @@ import { useState } from "react"
 import Link from "next/link"
 import { Calendar, FileText, ChevronDown } from "lucide-react"
 
-type PeriodKey = "2026-1" | "2025-2" | "2025-1" | "2024-2"
+type PeriodKey = "2026-2" | "2026-1" | "2025-2" | "2025-1" | "2024-2"
 
 export default function FinancialSupport() {
-  const [selectedPeriod, setSelectedPeriod] = useState<PeriodKey>("2026-1")
+  const [selectedPeriod, setSelectedPeriod] = useState<PeriodKey>("2026-2")
   const [isOpen, setIsOpen] = useState(false)
 
   const periods: { value: PeriodKey; label: string }[] = [
+    { value: "2026-2", label: "Periodo 2026-2" },
     { value: "2026-1", label: "Periodo 2026-1" },
     { value: "2025-2", label: "Periodo 2025-2" },
     { value: "2025-1", label: "Periodo 2025-1" },
@@ -18,6 +19,32 @@ export default function FinancialSupport() {
   ]
 
   const financialLinks: Record<PeriodKey, { name: string; url: string }[]> = {
+    "2026-2": [
+      {
+        name: "Junio",
+        url: "https://drive.google.com/drive/folders/1nzcl3aThACSir6bfYE1wfOOcpxDDPciu?usp=drive_link",
+      },
+      {
+        name: "Julio",
+        url: "https://drive.google.com/drive/folders/1XXtywvvIz4-z__qD7M0WfELH1ZHdQ2-z?usp=drive_link",
+      },
+      {
+        name: "Agosto",
+        url: "https://drive.google.com/drive/folders/1J6dSiMFltP1x49150zSar1ddu-2zF6th?usp=drive_link",
+      },
+      {
+        name: "Septiembre",
+        url: "https://drive.google.com/drive/folders/1i5qAUuIzDgHttv_kkMmpus8JaBLI5u-G?usp=drive_link",
+      },
+      {
+        name: "Octubre",
+        url: "https://drive.google.com/drive/folders/1CbXp34bHR1vTLxvv2jjWcISQUOWMYE73?usp=drive_link",
+      },
+      {
+        name: "Noviembre",
+        url: "https://drive.google.com/drive/folders/1dVjiDoOw2ydDblpaJeyvV2j0SV1TQrUT?usp=drive_link",
+      },
+    ],
     "2026-1": [
       {
         name: "Febrero",
